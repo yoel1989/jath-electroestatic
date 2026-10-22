@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JATH ELECTROESTATIC</title>
+<meta name="description" content="Pinturas electrostáticas en polvo, equipos, repuestos y servicios. Arma tu cotización y envíala por WhatsApp.">
+<meta name="referrer" content="no-referrer">
+<link rel="preload" as="image" href="fotos/escena.jpg" fetchpriority="high">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+<script>
+/* Al recargar con F5 el navegador devuelve la pagina al punto donde estaba, y parece que
+   no se actualizo nada. Aqui se empieza de nuevo arriba y se limpia la seccion de la
+   direccion, para ver los cambios desde el principio. */
+(function () {
+  try {
+    var n = performance.getEntriesByType('navigation')[0];
+    if (!n || n.type !== 'reload') return;
+    // Se quita la seccion de la direccion: si no, al volver arriba el enlace del menu a esa
+    // misma seccion ya no responde (la direccion no cambia y el navegador no salta).
+    if (location.hash) {
+      try {
+        history.replaceState(null, '', location.href.replace(/#.*$/, ''));
+      } catch (e) {
+        try { location.hash = ''; } catch (e2) {}
+      }
+    }
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    var raiz = document.documentElement;
+    function arriba() {
+      var antes = raiz.style.scrollBehavior;
+      raiz.style.scrollBehavior = 'auto';
+      window.scrollTo(0, 0);
+      raiz.style.scrollBehavior = antes;
+    }
+    arriba();
+    document.addEventListener('DOMContentLoaded', arriba);
+    window.addEventListener('load', function () {
+      arriba();
+      requestAnimationFrame(function () { requestAnimationFrame(arriba); });
+    });
+  } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<header class="cabecera">
+  <a class="marca" href="#portada">
+    <span class="marca-sigla">JATH</span>
+    <span class="marca-nombre">Electroestatic</span>
+  </a>
+  <nav class="menu">
+    <a href="#colores">Colores</a>
+    <a href="#equipos">Equipos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#trabajos">Trabajos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <button class="btn btn-rojo" id="abrir-cotizacion">Cotizar</button>
+</header>
+
+<main>
+
+  <section class="portada" id="portada">
+    <div class="escena">
+      <img class="escena-foto" src="fotos/escena.jpg" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
+      <div class="escena-velo"></div>
+      <div class="escena-chorro" aria-hidden="true">
+        <div class="escena-abanico"></div>
+        <div class="escena-polvo" id="escena-polvo"></div>
+        <img class="escena-pistola" src="fotos/pistola.jpg" alt="" decoding="async">
+      </div>
+      <svg class="escena-pieza" viewBox="0 0 200 176" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="acero" gradientUnits="userSpaceOnUse" x1="0" y1="16" x2="0" y2="176">
+            <stop offset="0" stop-color="#C4C9CC"/>
+            <stop offset=".26" stop-color="#A2A8AC"/>
+            <stop offset=".62" stop-color="#7E8488"/>
+            <stop offset="1" stop-color="#545A5E"/>
+          </linearGradient>
+          <linearGradient id="pintura-color" gradientUnits="userSpaceOnUse" x1="0" y1="24" x2="0" y2="168">
+            <stop offset="0" stop-color="#0573BC"/>
+            <stop offset=".2" stop-color="#00A896"/>
+            <stop offset=".4" stop-color="#469D39"/>
+            <stop offset=".6" stop-color="#EAAA0D"/>
+            <stop offset=".8" stop-color="#E25327"/>
+            <stop offset="1" stop-color="#D0326D"/>
+          </linearGradient>
+          <linearGradient id="pintura-fade" gradientUnits="userSpaceOnUse" x1="14" y1="0" x2="196" y2="0">
+            <stop offset="0" stop-color="#FFFFFF" stop-opacity="1"/>
+            <stop offset=".34" stop-color="#FFFFFF" stop-opacity=".95"/>
+            <stop offset=".5" stop-color="#FFFFFF" stop-opacity=".5"/>
+            <stop offset=".63" stop-color="#FFFFFF" stop-opacity="0"/>
+          </linearGradient>
+          <mask id="mascara-pintura">
+            <rect x="0" y="0" width="200" height="176" fill="url(#pintura-fade)"/>
+          </mask>
+          <g id="cuerpo"><g><rect x="12" y="24" width="176" height="17" rx="1.4"/><rect x="13" y="37.8" width="174" height="2.2" rx="1" fill="#000000" opacity=".18"/><rect x="13" y="25" width="174" height="2.1" rx="1" fill="#FFFFFF" opacity=".2"/></g><g><rect x="12" y="151" width="176" height="17" rx="1.4"/><rect x="13" y="164.8" width="174" height="2.2" rx="1" fill="#000000" opacity=".18"/><rect x="13" y="152" width="174" height="2.1" rx="1" fill="#FFFFFF" opacity=".2"/></g><g><rect x="12" y="24" width="17" height="144" rx="1.4"/><rect x="13" y="164.8" width="15" height="2.2" rx="1" fill="#000000" opacity=".18"/><rect x="26.5" y="26.8" width="1.5" height="138.4" rx=".7" fill="#000000" opacity=".18"/><rect x="13" y="25" width="15" height="2.1" rx="1" fill="#FFFFFF" opacity=".2"/><rect x="13" y="26.8" width="1.5" height="138.4" rx=".7" fill="#FFFFFF" opacity=".2"/></g><g><rect x="171" y="24" width="17" height="144" rx="1.4"/><rect x="172" y="164.8" width="15" height="2.2" rx="1" fill="#000000" opacity=".18"/><rect x="185.5" y="26.8" width="1.5" height="138.4" rx=".7" fill="#000000" opacity=".18"/><rect x="172" y="25" width="15" height="2.1" rx="1" fill="#FFFFFF" opacity=".2"/><rect x="172" y="26.8" width="1.5" height="138.4" rx=".7" fill="#FFFFFF" opacity=".2"/></g><g><rect x="55" y="41" width="12" height="110" rx="1.4"/><rect x="56" y="147.8" width="10" height="2.2" rx="1" fill="#000000" opacity=".18"/><rect x="64.5" y="43.8" width="1.5" height="104.4" rx=".7" fill="#000000" opacity=".18"/><rect x="56" y="42" width="10" height="2.1" rx="1" fill="#FFFFFF" opacity=".2"/><rect x="56" y="43.8" width="1.5" height="104.4" rx=".7" fill="#FFFFFF" opacity=".2"/></g><g><rect x="94" y="41" width="12" height="110" rx="1.4"/><rect x="95" y="147.8" width="10" height="2.2" rx="1" fill="#000000" opacity=".18"/><rect x="103.5" y="43.8" width="1.5" height="104.4" rx=".7" fill="#000000" opacity=".18"/><rect x="95" y="42" width="10" height="2.1" rx="1" fill="#FFFFFF" opacity=".2"/><rect x="95" y="43.8" width="1.5" height="104.4" rx=".7" fill="#FFFFFF" opacity=".2"/></g><g><rect x="133" y="41" width="12" height="110" rx="1.4"/><rect x="134" y="147.8" width="10" height="2.2" rx="1" fill="#000000" opacity=".18"/><rect x="142.5" y="43.8" width="1.5" height="104.4" rx=".7" fill="#000000" opacity=".18"/><rect x="134" y="42" width="10" height="2.1" rx="1" fill="#FFFFFF" opacity=".2"/><rect x="134" y="43.8" width="1.5" height="104.4" rx=".7" fill="#FFFFFF" opacity=".2"/></g><g><rect x="29" y="90" width="142" height="12" rx="1.4"/><rect x="30" y="98.8" width="140" height="2.2" rx="1" fill="#000000" opacity=".18"/><rect x="30" y="91" width="140" height="2.1" rx="1" fill="#FFFFFF" opacity=".2"/></g></g>
+        </defs>
+        <g fill="none" stroke="#9BA1A5" stroke-width="3">
+          <circle cx="100" cy="5.4" r="4.6"/>
+        </g>
+        <g fill="url(#acero)">
+          <rect x="95.8" y="8" width="8.4" height="22" rx="1.6"/>
+          <rect x="80" y="14.6" width="40" height="8.4" rx="4.2"/>
+        </g>
+        <use href="#cuerpo" fill="url(#acero)"/>
+        <g fill="url(#acero)" stroke="#FFFFFF" stroke-opacity=".22" stroke-width=".7"><rect x="53.2" y="39.2" width="15.6" height="3.6" rx="1.8"/><rect x="53.2" y="149.2" width="15.6" height="3.6" rx="1.8"/><rect x="92.2" y="39.2" width="15.6" height="3.6" rx="1.8"/><rect x="92.2" y="149.2" width="15.6" height="3.6" rx="1.8"/><rect x="131.2" y="39.2" width="15.6" height="3.6" rx="1.8"/><rect x="131.2" y="149.2" width="15.6" height="3.6" rx="1.8"/><rect x="27.2" y="88.2" width="3.8" height="15.6" rx="1.8"/><rect x="169" y="88.2" width="3.8" height="15.6" rx="1.8"/><rect x="27.1" y="39.1" width="3.8" height="3.8" rx="1.7" transform="rotate(45 29 41)"/><rect x="169.1" y="39.1" width="3.8" height="3.8" rx="1.7" transform="rotate(45 171 41)"/><rect x="27.1" y="149.1" width="3.8" height="3.8" rx="1.7" transform="rotate(45 29 151)"/><rect x="169.1" y="149.1" width="3.8" height="3.8" rx="1.7" transform="rotate(45 171 151)"/></g>
+        <g fill="url(#acero)"><circle cx="20.5" cy="32.5" r="4"/><circle cx="179.5" cy="32.5" r="4"/><circle cx="20.5" cy="159.5" r="4"/><circle cx="179.5" cy="159.5" r="4"/></g>
+        <g fill="#4C5154" opacity=".85"><circle cx="20.5" cy="32.5" r="2.5"/><circle cx="179.5" cy="32.5" r="2.5"/><circle cx="20.5" cy="159.5" r="2.5"/><circle cx="179.5" cy="159.5" r="2.5"/></g>
+        <g fill="#FFFFFF" opacity=".45"><circle cx="19.6" cy="31.4" r="0.9"/><circle cx="178.6" cy="31.4" r="0.9"/><circle cx="19.6" cy="158.4" r="0.9"/><circle cx="178.6" cy="158.4" r="0.9"/></g>
+        <use href="#cuerpo" fill="url(#pintura-color)" mask="url(#mascara-pintura)"/>
+      </svg>
+      <p class="escena-pie">Aplicación electrostática en polvo</p>
+    </div>
+    <p class="antetitulo">Bogotá D.C, Colombia</p>
+    <h1>Confíe en los expertos<span>en pintura electrostática</span></h1>
+    <p class="bajada" id="portada-bajada">En JATH ELECTROESTATIC somos especialistas en soluciones de recubrimiento electrostático. Ofrecemos pinturas y equipos de alta calidad, respaldados por asesoría técnica personalizada y un servicio confiable. Nuestro compromiso es garantizar acabados duraderos y profesionales, convirtiéndonos en aliados estratégicos de la industria.</p>
+    <div class="portada-acciones">
+      <button class="btn btn-rojo btn-grande" data-ir="colores">Ver carta de colores</button>
+      <button class="btn btn-linea btn-grande" data-ir="equipos">Ver productos</button>
+    </div>
+    <ul class="cifras" id="cifras"></ul>
+  </section>
+
+  <section class="bloque" id="quienes">
+    <p class="antetitulo">Quiénes somos</p>
+    <h2>Aliados estratégicos de la industria</h2>
+    <div class="dos-columnas">
+      <article class="tarjeta tarjeta-mision" tabindex="0" role="region" aria-label="Misión corporativa">
+        <div class="tarjeta-cabecera">
+          <div class="tarjeta-icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <div>
+            <span class="tarjeta-etiqueta">Nuestro propósito</span>
+            <h3>Misión</h3>
+          </div>
+        </div>
+        <p class="parrafo" id="mision"></p>
+      </article>
+      <article class="tarjeta tarjeta-vision" tabindex="0" role="region" aria-label="Visión corporativa">
+        <div class="tarjeta-cabecera">
+          <div class="tarjeta-icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div>
+            <span class="tarjeta-etiqueta">Hacia dónde vamos</span>
+            <h3>Visión</h3>
+          </div>
+        </div>
+        <p class="parrafo" id="vision"></p>
+      </article>
+    </div>
+    <ul class="diferenciadores" id="diferenciadores"></ul>
+  </section>
+
+  <section class="bloque" id="trabajos">
+    <div class="bloque-cab">
+      <p class="antetitulo">Experiencia y Aplicaciones</p>
+      <h2>Trabajos en pintura electrostática</h2>
+      <p class="parrafo">Más de una década de acabados duraderos en piezas metálicas, perfiles arquitectónicos, autopartes, mobiliario y estructuras industriales.</p>
+    </div>
+    <div class="galeria-trabajos" id="galeria-trabajos"></div>
+  </section>
+
+  <section class="bloque" id="productos">
+    <p class="antetitulo">Productos</p>
+    <h2>Qué vendemos</h2>
+    <p class="parrafo">Pinturas, equipos y repuestos para el recubrimiento electrostático.</p>
+    <div class="productos" id="lista-productos"></div>
+  </section>
+
+  <section class="bloque" id="colores">
+    <p class="antetitulo">Carta de colores</p>
+    <h2>Elija sus colores</h2>
+    <p class="aviso">
+      El color de una pantalla no es el color de una pintura. Antes de decidir, pida una
+      muestra física: <a href="#cartas">ver la carta impresa</a>.
+    </p>
+    <div class="filtros" id="filtros-color"></div>
+    <div class="buscador">
+      <input type="search" id="buscar-color" placeholder="Buscar por nombre o código, por ejemplo VERDE o A02F2D" autocomplete="off">
+    </div>
+    <div class="rejilla-colores" id="rejilla-colores"></div>
+    <p class="vacio" id="color-vacio" hidden>No hay ningún color con ese código.</p>
+  </section>
+
+  <section class="bloque" id="cartas">
+    <p class="antetitulo">Carta impresa</p>
+    <h2>Así se ven en el papel</h2>
+    <p class="parrafo">Estas son las dos cartas tal como se imprimen. El tono en papel es el bueno.</p>
+    <div class="cartas">
+      <button class="carta" data-carta="cartas/carta-1.jpg"><img src="cartas/carta-1.jpg" width="1070" height="1294" alt="Carta de colores, primera parte" loading="lazy" decoding="async"></button>
+      <button class="carta" data-carta="cartas/carta-2.jpg"><img src="cartas/carta-2.jpg" width="1191" height="1400" alt="Carta de colores, segunda parte" loading="lazy" decoding="async"></button>
+    </div>
+  </section>
+
+  <section class="bloque" id="equipos">
+    <p class="antetitulo">Equipos y repuestos</p>
+    <h2>Lo que fabricamos y reparamos</h2>
+    <div class="filtros" id="filtros-equipo"></div>
+    <div class="rejilla-equipos" id="rejilla-equipos"></div>
+  </section>
+
+  <section class="bloque" id="servicios">
+    <p class="antetitulo">Servicios</p>
+    <h2>No solo le vendemos, le acompañamos</h2>
+    <div class="servicios" id="lista-servicios"></div>
+  </section>
+
+</main>
+
+<footer class="bloque pie-pagina" id="contacto">
+  <p class="antetitulo">Contáctenos</p>
+  <h2 id="lema">Hablemos</h2>
+  <div id="contacto-datos"></div>
+</footer>
+
+<a class="wa-fijo" id="wa-fijo" href="#" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.859L.054 23.428a.5.5 0 0 0 .612.612l5.568-1.478A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.523-5.183-1.432l-.361-.215-3.744.993.993-3.744-.216-.361A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<div class="barra" id="barra" hidden>
+  <button class="barra-info" data-abrir-cotizacion>
+    <span class="barra-cuenta" id="barra-cuenta">0</span>
+    <span class="barra-texto" id="barra-texto">items en su cotización</span>
+  </button>
+  <button class="btn btn-rojo" data-abrir-cotizacion>Revisar y enviar</button>
+</div>
+
+<div class="velo" id="velo" hidden></div>
+
+<aside class="cajon" id="cajon" hidden aria-label="Su cotización">
+  <header class="cajon-cab">
+    <h2>Su cotización</h2>
+    <button class="cerrar" id="cerrar-cajon" aria-label="Cerrar">&#10005;</button>
+  </header>
+  <div class="cajon-cuerpo">
+    <div id="cajon-vacio" class="cajon-vacio">
+      <p>Aún no ha agregado nada.</p>
+      <p class="cajon-pista">Toque el <b>+</b> de un color o de un equipo y aparecerá aquí.</p>
+    </div>
+    <ul class="cajon-lista" id="cajon-lista"></ul>
+    <label class="campo">
+      <span>Comentario para el asesor</span>
+      <textarea id="nota" rows="3" placeholder="Por ejemplo: necesito la entrega en Chía, y una demostración de la pistola."></textarea>
+    </label>
+    <p class="cajon-aviso">No publicamos precios: se los cotizamos según su proyecto.</p>
+    <p class="cajon-aviso" id="cajon-riesgo" hidden>La cotización es una solicitud, no un pedido en firme.</p>
+  </div>
+  <footer class="cajon-pie">
+    <a class="btn btn-rojo" id="boton-whatsapp" href="#" target="_blank" rel="noopener noreferrer">Enviar por WhatsApp</a>
+  </footer>
+</aside>
+
+<div class="lupa" id="lupa" hidden>
+  <div class="velo" data-cerrar-lupa></div>
+  <div class="lupa-caja">
+    <button class="cerrar lupa-cerrar" data-cerrar-lupa aria-label="Cerrar">&#10005;</button>
+    <div class="lupa-color" id="lupa-color"></div>
+    <div class="lupa-info">
+      <p class="lupa-familia" id="lupa-familia"></p>
+      <h3 class="lupa-hex" id="lupa-hex"></h3>
+      <p class="lupa-rgb" id="lupa-rgb"></p>
+      <p class="lupa-nota" id="lupa-nota"></p>
+      <div class="lupa-acciones">
+        <button class="btn btn-linea" id="lupa-copiar">Copiar código</button>
+        <button class="btn btn-rojo" id="lupa-agrregar">Agregar a la cotización</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="avisos" id="avisos" aria-live="polite"></div>
+
+
+<div class="cobertura-modal" id="modal-cobertura" hidden>
+  <div class="velo" data-cerrar-cobertura></div>
+  <div class="cobertura-caja">
+    <header class="cobertura-cab">
+      <div>
+        <span class="cobertura-antetitulo">Logística y Despachos JATH</span>
+        <h2>Zonas de Entrega y Cobertura</h2>
+      </div>
+      <button class="cerrar" data-cerrar-cobertura aria-label="Cerrar">&#10005;</button>
+    </header>
+
+    <div class="cobertura-cuerpo">
+      <div class="cobertura-tarjetas">
+        <div class="cobertura-tarjeta cobertura-tarjeta-local">
+          <div class="cobertura-badge">⚡ Entrega el mismo día</div>
+          <h3>Bogotá D.C. y Alrededores</h3>
+          <p>Despacho inmediato para pedidos confirmados en la mañana. Cobertura directa en la capital y municipios de la Sabana:</p>
+          <ul class="cobertura-lista">
+            <li>Bogotá D.C. (todas las localidades industriales y comerciales)</li>
+            <li>Soacha, Mosquera, Funza, Madrid, Facatativá</li>
+            <li>Chía, Cota, Cajicá, Zipaquirá, Tocancipá</li>
+          </ul>
+          <div class="cobertura-tiempo"><strong>Tiempo estimado:</strong> Entre 2 y 5 horas en el mismo día hábil.</div>
+        </div>
+
+        <div class="cobertura-tarjeta cobertura-tarjeta-nacional">
+          <div class="cobertura-badge">🇨🇴 Cobertura Nacional</div>
+          <h3>Envíos a toda Colombia</h3>
+          <p>Despachos diarios de pinturas electrostáticas en polvo, equipos de aplicación y repuestos con embalaje reforzado:</p>
+          <ul class="cobertura-lista">
+            <li>Medellín, Cali, Barranquilla, Bucaramanga</li>
+            <li>Eje Cafetero, Cartagena, Cúcuta, Ibagué, Neiva</li>
+            <li>Cualquier municipio con transporte de carga o mensajería</li>
+          </ul>
+          <div class="cobertura-tiempo"><strong>Tiempo estimado:</strong> 24 a 48 horas según ciudad de destino.</div>
+        </div>
+      </div>
+
+      <div class="cobertura-mapa-contenedor">
+        <div class="cobertura-mapa-cab">
+          <h4>Red de distribución desde Bogotá hacia todo el territorio nacional</h4>
+          <span class="mapa-leyenda"><i class="pin-pulso"></i> Centro de operaciones (Bogotá D.C.)</span>
+        </div>
+        <svg class="mapa-colombia" viewBox="0 0 500 450" aria-label="Mapa de cobertura de distribución nacional">
+          <defs>
+            <radialGradient id="grad-bogota" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#2D8A4E" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#2D8A4E" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glow-pin" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+          <path class="mapa-silueta" d="M 230 35 C 250 40, 270 50, 280 75 C 290 85, 275 110, 260 120 C 265 140, 290 155, 305 180 C 320 200, 310 230, 295 250 C 310 270, 350 280, 390 285 C 410 320, 370 350, 340 370 C 310 395, 280 435, 265 440 C 250 430, 230 390, 210 370 C 180 340, 160 300, 150 260 C 140 230, 160 210, 175 180 C 180 150, 200 130, 195 100 C 190 70, 210 50, 230 35 Z"/>
+          
+          <line class="mapa-ruta" x1="240" y1="225" x2="225" y2="70"/>
+          <line class="mapa-ruta" x1="240" y1="225" x2="265" y2="155"/>
+          <line class="mapa-ruta" x1="240" y1="225" x2="195" y2="175"/>
+          <line class="mapa-ruta" x1="240" y1="225" x2="180" y2="270"/>
+          <line class="mapa-ruta" x1="240" y1="225" x2="195" y2="225"/>
+          <line class="mapa-ruta" x1="240" y1="225" x2="275" y2="245"/>
+          <line class="mapa-ruta" x1="240" y1="225" x2="210" y2="305"/>
+
+          <g class="mapa-nodo" transform="translate(225, 70)">
+            <circle r="4.5" fill="#0573BC"/>
+            <text x="8" y="4" class="mapa-ciudad">Barranquilla / Cartagena</text>
+          </g>
+          <g class="mapa-nodo" transform="translate(265, 155)">
+            <circle r="4.5" fill="#0573BC"/>
+            <text x="8" y="4" class="mapa-ciudad">Bucaramanga</text>
+          </g>
+          <g class="mapa-nodo" transform="translate(195, 175)">
+            <circle r="5" fill="#0573BC"/>
+            <text x="-8" y="4" text-anchor="end" class="mapa-ciudad">Medellín</text>
+          </g>
+          <g class="mapa-nodo" transform="translate(195, 225)">
+            <circle r="4.5" fill="#0573BC"/>
+            <text x="-8" y="4" text-anchor="end" class="mapa-ciudad">Eje Cafetero</text>
+          </g>
+          <g class="mapa-nodo" transform="translate(180, 270)">
+            <circle r="5" fill="#0573BC"/>
+            <text x="-8" y="4" text-anchor="end" class="mapa-ciudad">Cali</text>
+          </g>
+          <g class="mapa-nodo" transform="translate(275, 245)">
+            <circle r="4" fill="#0573BC"/>
+            <text x="8" y="4" class="mapa-ciudad">Llanos Orientales</text>
+          </g>
+          <g class="mapa-nodo" transform="translate(210, 305)">
+            <circle r="4" fill="#0573BC"/>
+            <text x="-8" y="4" text-anchor="end" class="mapa-ciudad">Huila / Tolima</text>
+          </g>
+
+          <circle cx="240" cy="225" r="28" fill="url(#grad-bogota)" class="mapa-pulso"/>
+          <circle cx="240" cy="225" r="8" fill="#2D8A4E" stroke="#FFFFFF" stroke-width="2.5" filter="url(#glow-pin)"/>
+          <circle cx="240" cy="225" r="3" fill="#FFFFFF"/>
+          <g transform="translate(240, 212)">
+            <rect x="-85" y="-22" width="170" height="20" rx="10" fill="#2D8A4E"/>
+            <text x="0" y="-8" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="700">★ BOGOTÁ (Mismo Día)</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="cobertura-pie">
+        <a class="btn btn-rojo" target="_blank" rel="noopener noreferrer" id="btn-cobertura-wa">Consultar flete o envío por WhatsApp &rarr;</a>
+        <button class="btn btn-linea" data-cerrar-cobertura>Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="datos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

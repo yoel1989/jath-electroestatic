@@ -1,0 +1,48 @@
+﻿JATH Electroestatic - Catalogo y cotizador
+===================================
+
+Abra  index.html  con doble clic. Funciona sin internet.
+
+Que hay adentro
+--------------
+  index.html     la pagina
+  estilo.css     los colores y el diseno
+  app.js         la logica
+  datos.js       LOS DATOS: colores, equipos, servicios, contacto
+  fotos/         los equipos, la escena y las fotos de trabajos
+  cartas/        las dos cartas de colores impresas
+  NOMBRES.txt    los nombres de los 15 equipos, para corregir
+  COLORES.txt    los nombres de los 48 colores, para corregir
+  fuente/        las herramientas para regenerar el sitio (no hace falta abrirla)
+
+Las fotos de la seccion de trabajos
+-----------------------------------
+Son seis y se llaman  trabajo-01.jpg ... trabajo-06.jpg. Estan en  fotos/ . Para cambiarlas,
+ponga la foto nueva con el mismo nombre y el mismo formato.
+
+Como se cambia el nombre de un equipo o de un color
+---------------------------------------------------
+Abra  NOMBRES.txt  (equipos) o  COLORES.txt  (colores). Cada linea dice:
+
+    numero | nombre que usted quiera poner
+
+Por ejemplo:
+
+    3 | Cabina de pintura con blowers
+    7 | Gris Tornado Gofrado
+
+Guarde el archivo y vuelva a correr  catalogo.py  en la terminal:
+
+    cd "C:/Users/yoooe/OneDrive/Desktop/JATH Electroestatic - Catalogo"
+    python fuente/catalogo.py
+
+Se actualiza index.html y las demas. No hay que tocar nada mas.
+
+De donde salen los colores
+--------------------------
+Los 48 codigos se midieron de la pintura real de las dos cartas impresas. Los nombres son los
+que la carta trae impresos al lado: se leyeron del rotulo, y los pocos que no se alcanzaron a
+leer con seguridad estan marcados en COLORES.txt con " <- revisar". Confirmelos contra la carta.
+
+Los nombres de los equipos son PROVISIONALES. El folleto no rotula ninguna foto, asi que
+se dedujeron de la forma del objeto. Corrigalos en NOMBRES.txt.
