@@ -28,8 +28,8 @@
   (function escena() {
     var caja = $('#escena-polvo');
     if (!caja) return;
-    var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (quieto) return;
+    // Las gotas se crean siempre. Si el telefono pide menos movimiento, el CSS las deja
+    // congeladas: asi el chorro se ve igual y la escena no queda vacia.
     // La abertura se mide en pantalla en vez de escribirse a mano: asi la nube copia el
     // abanico dibujado en CSS, y no se sale de la cinta en celular ni queda raquitica en
     // pantalla ancha.

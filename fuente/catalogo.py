@@ -677,7 +677,7 @@ HTML = r"""<!doctype html>
   } catch (e) {}
 })();
 </script>
-<link rel="stylesheet" href="estilo.css">
+<link rel="stylesheet" href="estilo.css?v=20261021a">
 </head>
 <body>
 
@@ -982,8 +982,8 @@ HTML = r"""<!doctype html>
     </div>
   </div>
 </div>
-<script src="datos.js"></script>
-<script src="app.js"></script>
+<script src="datos.js?v=20261021a"></script>
+<script src="app.js?v=20261021a"></script>
 </body>
 </html>
 """
@@ -1220,10 +1220,23 @@ a  { color: var(--rojo); }
   text-shadow: 0 1px 0 rgba(250,247,240,.9);
 }
 @media (max-width: 620px) {
-  .escena { height: 150px; --ancho-pieza: 112px; }
-  .escena-chorro { left: 42%; }
-  .escena-abanico { top: -58px; height: 116px; }
-  .escena-pistola { width: 150px; }
+  /* En el celular la cinta es angosta: con la pieza de 112 px y el arma de 150 px al chorro
+     solo le quedaban 60 px visibles y se perdia. Se achica la pieza y el arma con clamp para
+     que el abanico gane espacio, y la cinta sube a 170 px para que el cono respire. */
+  .escena { height: 170px; --ancho-pieza: clamp(80px, 26vw, 96px); }
+  .escena-chorro { left: 40%; top: 52%; }
+  .escena-abanico { top: -64px; height: 128px; }
+  .escena-pieza { top: 52%; }
+  /* El degradado base va al 30% de opacidad y en pantalla pequena casi no se ve: este pseudo
+     duplica los mismos colores encima (sin tocar el escritorio) y deja el chorro bien marcado. */
+  .escena-abanico::after {
+    content: ""; position: absolute; inset: 0;
+    background: inherit; opacity: .8; pointer-events: none;
+  }
+  .escena-pistola { width: clamp(124px, 37vw, 138px); }
+  .escena-polvo i {
+    width: calc(6px * var(--tam, 1)); height: calc(6px * var(--tam, 1));
+  }
   .escena-pie { font-size: .54rem; letter-spacing: .1em; right: 8px; }
 }
 
@@ -2059,10 +2072,11 @@ body.sin-barra .wa-fijo { bottom: 18px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
-  /* La escena se queda quieta y con el polvo quieto: si alguien pidio menos movimiento, no se
-     le muestra ni el zoom de la foto ni el chorro. */
+  /* La escena se queda quieta: sin zoom de la foto y con las gotas congeladas en pleno vuelo
+     (los retrasos negativos las reparten por el abanico). No se ocultan: el chorro sigue
+     leyendose aunque el telefono tenga activado "reducir movimiento". */
   .escena-foto { animation: none; transform: scale(1.07); }
-  .escena-polvo { display: none; }
+  .escena-polvo i { animation-play-state: paused; }
 }
 
 /* ------------------------------------------------------------------ galería de trabajos */
@@ -2291,8 +2305,8 @@ APP = r"""/* JATH Electroestatic - catalogo vivo
   (function escena() {
     var caja = $('#escena-polvo');
     if (!caja) return;
-    var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (quieto) return;
+    // Las gotas se crean siempre. Si el telefono pide menos movimiento, el CSS las deja
+    // congeladas: asi el chorro se ve igual y la escena no queda vacia.
     // La abertura se mide en pantalla en vez de escribirse a mano: asi la nube copia el
     // abanico dibujado en CSS, y no se sale de la cinta en celular ni queda raquitica en
     // pantalla ancha.
