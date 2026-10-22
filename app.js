@@ -28,8 +28,8 @@
   (function escena() {
     var caja = $('#escena-polvo');
     if (!caja) return;
-    // Las gotas se crean siempre. Si el telefono pide menos movimiento, el CSS las deja
-    // congeladas: asi el chorro se ve igual y la escena no queda vacia.
+    // Las gotas se crean siempre: el chorro es el efecto principal de la portada y debe
+    // animarse aunque el telefono tenga activado "reducir movimiento".
     // La abertura se mide en pantalla en vez de escribirse a mano: asi la nube copia el
     // abanico dibujado en CSS, y no se sale de la cinta en celular ni queda raquitica en
     // pantalla ancha.

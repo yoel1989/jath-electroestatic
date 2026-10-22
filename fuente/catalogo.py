@@ -677,7 +677,7 @@ HTML = r"""<!doctype html>
   } catch (e) {}
 })();
 </script>
-<link rel="stylesheet" href="estilo.css?v=20261021a">
+<link rel="stylesheet" href="estilo.css?v=20261021b">
 </head>
 <body>
 
@@ -982,8 +982,8 @@ HTML = r"""<!doctype html>
     </div>
   </div>
 </div>
-<script src="datos.js?v=20261021a"></script>
-<script src="app.js?v=20261021a"></script>
+<script src="datos.js?v=20261021b"></script>
+<script src="app.js?v=20261021b"></script>
 </body>
 </html>
 """
@@ -1206,10 +1206,10 @@ a  { color: var(--rojo); }
   100% { transform: translate3d(var(--recorrido, 600px), var(--dy, 0px), 0) scale(1.5); opacity: 0; }
 }
 
-/* Cuando la cinta sale de pantalla se congelan sus animaciones: no se gasta bateria moviendo
-   gotas que nadie ve. app.js pone la clase al entrar y salir del primer pantallazo. */
-.escena-quieta .escena-foto,
-.escena-quieta .escena-polvo i { animation-play-state: paused; }
+/* Cuando la cinta sale de pantalla se congela el zoom de la foto, pero el chorro sigue
+   corriendo: en el celular el observador de interseccion lo dejaba quieto y el efecto se
+   perdia. Las gotas no cuestan nada y el cliente quiere verlas siempre en movimiento. */
+.escena-quieta .escena-foto { animation-play-state: paused; }
 
 /* El pie va arriba a la derecha y no abajo: abajo a la derecha ahora esta la estructura que se
    pinta, y el rotulo se perderia encima del metal. */
@@ -2072,11 +2072,9 @@ body.sin-barra .wa-fijo { bottom: 18px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
-  /* La escena se queda quieta: sin zoom de la foto y con las gotas congeladas en pleno vuelo
-     (los retrasos negativos las reparten por el abanico). No se ocultan: el chorro sigue
-     leyendose aunque el telefono tenga activado "reducir movimiento". */
+  /* La escena se queda quieta: sin zoom de la foto. El chorro de pintura si sigue animado,
+     porque es el efecto principal de la portada y el cliente lo quiere ver siempre. */
   .escena-foto { animation: none; transform: scale(1.07); }
-  .escena-polvo i { animation-play-state: paused; }
 }
 
 /* ------------------------------------------------------------------ galería de trabajos */
@@ -2305,8 +2303,8 @@ APP = r"""/* JATH Electroestatic - catalogo vivo
   (function escena() {
     var caja = $('#escena-polvo');
     if (!caja) return;
-    // Las gotas se crean siempre. Si el telefono pide menos movimiento, el CSS las deja
-    // congeladas: asi el chorro se ve igual y la escena no queda vacia.
+    // Las gotas se crean siempre: el chorro es el efecto principal de la portada y debe
+    // animarse aunque el telefono tenga activado "reducir movimiento".
     // La abertura se mide en pantalla en vez de escribirse a mano: asi la nube copia el
     // abanico dibujado en CSS, y no se sale de la cinta en celular ni queda raquitica en
     // pantalla ancha.
